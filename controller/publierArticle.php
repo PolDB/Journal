@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) { //session_status vérifie le statut
     session_start();
 }
 if (!$_SESSION['mdp']) {
-    header('location:connexionAdmin.php');
+    header('location:../controller/connexionAdmin.php');
 }
 
 if (isset($_POST['envoi'])) {

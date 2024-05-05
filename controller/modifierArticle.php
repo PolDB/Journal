@@ -1,6 +1,6 @@
 <?php
 
-require '../controller/config.php';
+require 'controller/config.php';
 if (isset($_GET['id']) and !empty($_GET['id'])) {
     $getid = $_GET['id'];
 
