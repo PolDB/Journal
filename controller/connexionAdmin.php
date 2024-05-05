@@ -13,7 +13,7 @@ if (isset($_POST['valider'])) {
             $_SESSION['mdp'] = $pseudo_saisi; // Correction de l'assignation de la session
             // Vous avez oublié de spécifier une valeur pour $_SESSION['mdp'], 
             // je suppose que vous vouliez stocker le mot de passe, mais ce n'est pas recommandé
-            header("Location:..\models\index.php"); // Redirection après une connexion réussie
+            header("Location:../models/index.php"); // Redirection après une connexion réussie
 
         } else {
             echo "Votre pseudo ou mot de passe est incorrect"; // Correction de la syntaxe echo
@@ -23,4 +23,7 @@ if (isset($_POST['valider'])) {
     }
 }
 
-include '..\views\connexionAdmin.html';
+
+include '../views/header.html';
+include '../views/connexionAdmin.html';
+include '../views/footer.html';

@@ -1,0 +1,16 @@
+body{
+    flex-direction: column;
+    display: flex;
+    
+}
+
+header{
+    background-color: grey;
+    display: flex;
+
+}
+
+footer{
+    background-color: grey;
+    display: flex;
+}

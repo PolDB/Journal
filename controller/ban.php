@@ -18,3 +18,6 @@ if (isset($_GET['id']) and !empty($_GET['id'])) {
 } else {
     echo "l'identifiant n'a pas été trouvé";
 }
+
+include '../views/header.html';
+include '../views/footer.html';

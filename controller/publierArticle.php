@@ -1,10 +1,10 @@
 <?php
-require '..\controller\config.php';
+require '../controller/config.php';
 if (session_status() === PHP_SESSION_NONE) { //session_status vérifie le statut actuel de la session, si PHP_SESSION_NONE, ça veut dire que la session n'existe pas alors elle va démarer, sans se code, la session se lançait en boucle infini.
     session_start();
 }
 if (!$_SESSION['mdp']) {
-    header('location:..\controller\connexionAdmin.php');
+    header('location:../controller/connexionAdmin.php');
 }
 
 if (isset($_POST['envoi'])) {
@@ -16,9 +16,12 @@ if (isset($_POST['envoi'])) {
         $insertArticle->execute(array($titre, $contenu));
 
         echo "l'article a bien été envoyé";
-        header('location:..\models\articles.php');
+        header('location:../models/articles.php');
     } else {
         echo "veuillez remplir tous les champs...";
     }
 }
-include '..\views\publierArticle.html';
+
+include '../views/header.html';
+include '../views/publierArticle.html';
+include '../views/footer.html';
