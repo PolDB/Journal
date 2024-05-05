@@ -1,7 +1,7 @@
 <?php
-session_start(); 
+session_start();
 $_SESSION = array();
 session_destroy();
-header('location:connexionAdmin.php')
+header('location:../controller/connexionAdmin.php')
 
 ?>s
