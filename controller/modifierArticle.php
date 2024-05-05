@@ -1,6 +1,6 @@
 <?php
 
-require 'controller/config.php';
+include '..\controller\config.php';
 if (isset($_GET['id']) and !empty($_GET['id'])) {
     $getid = $_GET['id'];
 
@@ -18,13 +18,12 @@ if (isset($_GET['id']) and !empty($_GET['id'])) {
             $updateArticle = $bdd->prepare('UPDATE articles SET Titre = ?, Contenu = ? WHERE id = ?');
             $updateArticle->execute(array($titre_saisi, $contenu_saisi, $getid));
 
-            header('Location:../models/articles.php');
+            header('Location:..\models\articles.php');
         } else {
-            echo "Aucun article trouvé";
+            echo "Modifier votre article ci-desous !!";
         }
     } else {
         echo "aucun identifiant trouvé";
     }
-
-    include '../views/modifierArticle.html';
 }
+include '..\views\modifierArticle.html';

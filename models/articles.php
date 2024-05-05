@@ -13,9 +13,9 @@ while ($article = $recupArticles->fetch()) {
     <div clas="article" style="border: 1px solid black;">
         <h1><?= $article['Titre']; ?></h1>
         <p><?= $article['Contenu']; ?></p>
-        <a href="../controller/supprimerArticle.php $article['Id']; ?>">
+        <a href="../controller/supprimerArticle.php?id=<?= $article['Id']; ?>">
             <button>Supprimer l'article</button></a>
-        <a href="../controller/modifierArticle.php $article['Id']; ?>">
+        <a href="../controller/modifierArticle.php?id=<?= $article['Id']; ?>">
             <button>Modifier l'article</button></a>
     </div>
 <?php
