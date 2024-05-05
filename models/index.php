@@ -5,4 +5,4 @@ if (session_status() === PHP_SESSION_NONE) {
 if (!$_SESSION['mdp']) {
     header('location:../controller/connexionAdmin.php');
 }
-include 'index.html';
+include '../views/index.html';

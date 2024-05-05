@@ -2,7 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-require 'config.php';
+require '../controller/config.php';
 if (isset($_GET['id']) and !empty($_GET['id'])) {
     $getid = $_GET['id'];
     $recupUser = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
