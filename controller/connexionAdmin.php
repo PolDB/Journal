@@ -23,7 +23,6 @@ if (isset($_POST['valider'])) {
     }
 }
 
-
 include '../views/header.html';
 include '../views/connexionAdmin.html';
 include '../views/footer.html';
