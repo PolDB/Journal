@@ -1,6 +1,7 @@
 <?php
 session_start(); // Vous avez oublié le point-virgule ici
 
+include '../views/header.html';
 if (isset($_POST['valider'])) {
     if (!empty($_POST['pseudo']) && !empty($_POST['mdp'])) { // Utilisation de && au lieu de AND
         $pseudo_par_defaut = "paul";
@@ -23,6 +24,5 @@ if (isset($_POST['valider'])) {
     }
 }
 
-include '../views/header.html';
 include '../views/connexionAdmin.html';
 include '../views/footer.html';

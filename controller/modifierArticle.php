@@ -1,6 +1,7 @@
 <?php
 
 include '../controller/config.php';
+include '../views/header.html';
 if (isset($_GET['id']) and !empty($_GET['id'])) {
     $getid = $_GET['id'];
 
@@ -26,6 +27,6 @@ if (isset($_GET['id']) and !empty($_GET['id'])) {
         echo "aucun identifiant trouvé";
     }
 }
-include '../views/header.html';
+
 include '../views/modifierArticle.html';
 include '../views/footer.html';
