@@ -1,8 +1,10 @@
 .liste{
     display: flex;
-    justify-content: center;
-    gap: 5vw;
+    flex-direction: column;
+    gap: 2vw;
     border: 2px solid black;
     margin-left: 20vw;
     margin-right: 20vw;
+    margin-top: 20vh;
+    align-items: center;
 }

@@ -1,19 +1,20 @@
 <?php
 session_start(); // Vous avez oublié le point-virgule ici
-
+require "config.php";
 include '../views/header.html';
 if (isset($_POST['valider'])) {
-    if (!empty($_POST['pseudo']) && !empty($_POST['mdp'])) { // Utilisation de && au lieu de AND
-        $pseudo_par_defaut = "paul";
-        $mdp_par_defaut = "paul123"; // Correction du mot de passe par défaut
+    if (!empty($_POST['pseudo']) && !empty($_POST['password'])) { // Utilisation de && au lieu de AND
+        // $pseudo_par_defaut = "paul";
+        // $mdp_par_defaut = "paul123"; // Correction du mot de passe par défaut
 
         $pseudo_saisi = htmlspecialchars($_POST['pseudo']);
-        $mdp_saisi = htmlspecialchars($_POST['mdp']);
-
-        if ($pseudo_saisi == $pseudo_par_defaut && $mdp_saisi == $mdp_par_defaut) {
-            $_SESSION['mdp'] = $pseudo_saisi; // Correction de l'assignation de la session
-            // Vous avez oublié de spécifier une valeur pour $_SESSION['mdp'], 
-            // je suppose que vous vouliez stocker le mot de passe, mais ce n'est pas recommandé
+        $mdp_saisi = sha1($_POST['password']);
+        $recupUser = $bdd->prepare('SELECT id FROM admin WHERE pseudo = ? AND password = ?');
+        $recupUser->execute(array($pseudo, $password));
+        if ($recupUser->rowCount() > 0) {
+            $_SESSION['pseudo'] = $pseudo;
+            $_SESSION['password'] = $password;
+            $_SESSION['id'] = $recupUser->fetch()['id'];
             header("Location:../models/index.php"); // Redirection après une connexion réussie
 
         } else {
