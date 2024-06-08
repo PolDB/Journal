@@ -10,13 +10,13 @@ if (isset($_POST['valider'])) {
         $pseudo = htmlspecialchars($_POST['pseudo']);
         $mdp = sha1($_POST['mdp']);
 
-        $recupUser = $bdd->prepare('SELECT id FROM admin WHERE pseudo = ? AND mdp = ?');
+        $recupUser = $bdd->prepare('SELECT id FROM membres WHERE pseudo = ? AND mdp = ?');
         $recupUser->execute(array($pseudo, $mdp));
         if ($recupUser->rowCount() > 0) {
             $_SESSION['pseudo'] = $pseudo;
             $_SESSION['mdp'] = $mdp;
             $_SESSION['id'] = $recupUser->fetch()['id'];
-            header("Location:../models/index.php"); // Redirection après une connexion réussie
+            header("Location:../models/articlesMembres.php"); // Redirection après une connexion réussie
 
         } else {
             echo "Votre pseudo ou mot de passe est incorrect"; // Correction de la syntaxe echo
@@ -26,5 +26,5 @@ if (isset($_POST['valider'])) {
     }
 }
 
-include '../views/connexionAdmin.html';
+include '../views/connexionMembres.html';
 include '../views/footer.html';

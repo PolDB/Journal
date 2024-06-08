@@ -2,6 +2,4 @@
 session_start();
 $_SESSION = array();
 session_destroy();
-header('location:../controller/connexionAdmin.php')
-
-?>s
+header('location:../controller/connexionMembres.php');

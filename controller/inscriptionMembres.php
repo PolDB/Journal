@@ -8,10 +8,10 @@ if (isset($_POST['envoi'])) {
     if (!empty($_POST['pseudo']) and !empty($_POST['mdp'])) {
         $pseudo = htmlspecialchars($_POST['pseudo']);
         $mdp = sha1($_POST['mdp']);
-        $insertUser = $bdd->prepare('INSERT INTO admin (pseudo, mdp)VALUES(?, ?)');
+        $insertUser = $bdd->prepare('INSERT INTO membres (pseudo, mdp)VALUES(?, ?)');
         $insertUser->execute(array($pseudo, $mdp));
 
-        $recupUser = $bdd->prepare('SELECT id FROM admin WHERE pseudo = ? AND mdp = ?');
+        $recupUser = $bdd->prepare('SELECT id FROM membres WHERE pseudo = ? AND mdp = ?');
         $recupUser->execute(array($pseudo, $mdp));
         if ($recupUser->rowCount() > 0) {
             $_SESSION['pseudo'] = $pseudo;
