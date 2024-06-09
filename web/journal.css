@@ -1,11 +1,24 @@
 /* Styles de base */
-body {
-    font-family: Arial, sans-serif;
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    background-image: url(letter-447577_1280.jpg);
+}
+
+/* Conteneur principal */
+.main-content {
+    flex: 1;
+}
+
+/* Header */
 header {
     display: flex;
     justify-content: space-between;
@@ -14,11 +27,6 @@ header {
     color: white;
     padding: 10px 20px;
 }
-
-h1 {
-    margin: 0;
-}
-
 button {
     padding: 10px 20px;
     background-color: #555;
@@ -26,11 +34,15 @@ button {
     border: none;
     cursor: pointer;
 }
+h1 {
+    margin: 0;
+}
 
 button:hover {
     background-color: #777;
 }
 
+/* Footer */
 footer {
     background-color: #333;
     color: white;
@@ -38,6 +50,7 @@ footer {
     padding: 10px 0;
     margin-top: auto;
 }
+
 /* Styles responsive */
 @media (max-width: 600px) {
     header {

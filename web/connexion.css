@@ -1,0 +1,15 @@
+.login{
+    display: flex;
+    justify-content: center;
+}
+
+p{
+    display: flex;
+    justify-content: center;
+}
+
+.login input[type="submit"] {
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+}

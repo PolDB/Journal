@@ -2,7 +2,7 @@
 session_start();
 require "config.php";
 require "../views/header.html";
-require "../views\inscriptionAdmin.html";
+require "../views\inscriptionMembres.html";
 
 if (isset($_POST['envoi'])) {
     if (!empty($_POST['pseudo']) and !empty($_POST['mdp'])) {
