@@ -17,6 +17,7 @@ if (isset($_POST['envoi'])) {
             $_SESSION['pseudo'] = $pseudo;
             $_SESSION['mdp'] = $mdp;
             $_SESSION['id'] = $recupUser->fetch()['id'];
+            header("Location:connexionMembres.php");
         }
         echo $_SESSION['id'];
     } else {
