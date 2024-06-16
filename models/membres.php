@@ -11,7 +11,7 @@ include '../views/header.html';
 include '../views/membres.html';
 $recupUsers = $bdd->query('SELECT * FROM membres');
 while ($user = $recupUsers->fetch()) {
-?><p><?= $user['pseudo']; ?> <a href="../controller/ban.php?id=<?= $user['id']; ?>">Bannir le membres</a></p><?php
-                                                                                                            }
-
-                                                                                                            include '../views/footer.html'; ?>
+?><p><?= $user['pseudo']; ?> <a href="../controller/ban.php?id=<?= $user['id']; ?>">Bannir le membres</a></p>
+<?php
+}
+include '../views/footer.html'; ?>

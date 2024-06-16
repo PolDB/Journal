@@ -1,7 +1,7 @@
 <?php
 session_start();
 require "config.php";
-require "../views/header.html";
+require "../views/headerUser.html";
 require "../views\inscriptionMembres.html";
 
 if (isset($_POST['envoi'])) {

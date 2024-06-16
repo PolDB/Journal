@@ -1,7 +1,7 @@
 <?php
 session_start(); // Vous avez oublié le point-virgule ici
 require "config.php";
-include '../views/header.html';
+include '../views/headerUser.html';
 if (isset($_POST['valider'])) {
     if (!empty($_POST['pseudo']) && !empty($_POST['mdp'])) { // Utilisation de && au lieu de AND
         // $pseudo_par_defaut = "paul";

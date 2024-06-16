@@ -2,4 +2,4 @@
 session_start();
 $_SESSION = array();
 session_destroy();
-header('location:../controller/connexionMembres.php');
+header('location:../models/sample.php');

@@ -33,6 +33,10 @@ button {
     color: white;
     border: none;
     cursor: pointer;
+    
+}
+.déco{
+    visibility: hidden;
 }
 h1 {
     margin: 0;
@@ -66,4 +70,8 @@ footer {
         width: 100%;
         text-align: center;
     }
+}
+
+.connexionAdmin .logoutButton{
+    display: none;
 }
