@@ -1,28 +1,35 @@
-<?php
-session_start(); // Vous avez oublié le point-virgule ici
+<?php // Correction du point-virgule manquant
 require "config.php";
-include '../views/headerUser.html';
+include "../models/fonctions.php";
+
+afficherBoutons();
+
 if (isset($_POST['valider'])) {
     if (!empty($_POST['pseudo']) && !empty($_POST['mdp'])) { // Utilisation de && au lieu de AND
-        // $pseudo_par_defaut = "paul";
-        // $mdp_par_defaut = "paul123"; // Correction du mot de passe par défaut
 
         $pseudo = htmlspecialchars($_POST['pseudo']);
-        $mdp = sha1($_POST['mdp']);
+        $mdp = $_POST['mdp'];
 
-        $recupUser = $bdd->prepare('SELECT id FROM admin WHERE pseudo = ? AND mdp = ?');
-        $recupUser->execute(array($pseudo, $mdp));
+        // Récupération de l'utilisateur par pseudo
+        $recupUser = $bdd->prepare('SELECT id, mdp FROM admin WHERE pseudo = ?');
+        $recupUser->execute(array($pseudo));
+
         if ($recupUser->rowCount() > 0) {
-            $_SESSION['pseudo'] = $pseudo;
-            $_SESSION['mdp'] = $mdp;
-            $_SESSION['id'] = $recupUser->fetch()['id'];
-            header("Location:../models/index.php"); // Redirection après une connexion réussie
-
+            $user = $recupUser->fetch();
+            // Vérification du mot de passe
+            if (password_verify($mdp, $user['mdp'])) {
+                $_SESSION['pseudo'] = $pseudo;
+                $_SESSION['id'] = $user['id'];
+                header("Location:../models/index.php"); // Redirection après une connexion réussie
+                exit;
+            } else {
+                echo "Votre pseudo ou mot de passe est incorrect"; // Message d'erreur en cas de mot de passe incorrect
+            }
         } else {
-            echo "Votre pseudo ou mot de passe est incorrect"; // Correction de la syntaxe echo
+            echo "Votre pseudo ou mot de passe est incorrect"; // Message d'erreur en cas de pseudo incorrect
         }
     } else {
-        echo "Veuillez remplir tous les champs..."; // Correction de la syntaxe echo et ajout d'une accolade manquante
+        echo "Veuillez remplir tous les champs..."; // Message d'erreur si des champs sont vides
     }
 }
 

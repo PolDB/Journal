@@ -3,7 +3,7 @@ require '../controller/config.php';
 if (session_status() === PHP_SESSION_NONE) { //session_status vérifie le statut actuel de la session, si PHP_SESSION_NONE, ça veut dire que la session n'existe pas alors elle va démarer, sans se code, la session se lançait en boucle infini.
     session_start();
 }
-if (!$_SESSION['mdp']) {
+if (!$_SESSION['id']) {
     header('location:../controller/connexionAdmin.php');
 }
 

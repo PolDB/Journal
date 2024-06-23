@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 require '../controller/config.php';
-if (!$_SESSION['mdp']) {
+if (!$_SESSION['id']) {
     header('location:../controller/connexionAdmin.php');
 }
 include '../views/header.html';

@@ -2,7 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-if (!$_SESSION['mdp']) {
+if (!$_SESSION['id']) {
     header('location: ../models/sample.php');
 }
 include '../views/header.html';

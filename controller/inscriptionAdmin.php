@@ -1,27 +1,30 @@
 <?php
-session_start();
 require "config.php";
 require "../views/header.html";
-require "../views\inscriptionAdmin.html";
+require "../views/inscriptionMembres.html";
 
 if (isset($_POST['envoi'])) {
-    if (!empty($_POST['pseudo']) and !empty($_POST['mdp'])) {
+    if (!empty($_POST['pseudo']) && !empty($_POST['mdp'])) { // Utilisation de && au lieu de and
         $pseudo = htmlspecialchars($_POST['pseudo']);
-        $mdp = sha1($_POST['mdp']);
-        $insertUser = $bdd->prepare('INSERT INTO admin (pseudo, mdp)VALUES(?, ?)');
+        $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT); // Utilisation de password_hash
+
+        // Insertion de l'administrateur dans la base de données
+        $insertUser = $bdd->prepare('INSERT INTO admin (pseudo, mdp) VALUES (?, ?)');
         $insertUser->execute(array($pseudo, $mdp));
 
-        $recupUser = $bdd->prepare('SELECT id FROM admin WHERE pseudo = ? AND mdp = ?');
-        $recupUser->execute(array($pseudo, $mdp));
+        // Récupération de l'administrateur pour créer la session
+        $recupUser = $bdd->prepare('SELECT id FROM admin WHERE pseudo = ?');
+        $recupUser->execute(array($pseudo));
         if ($recupUser->rowCount() > 0) {
+            $user = $recupUser->fetch();
             $_SESSION['pseudo'] = $pseudo;
-            $_SESSION['mdp'] = $mdp;
-            $_SESSION['id'] = $recupUser->fetch()['id'];
-            header("location:connexionAdmin.php");
+            $_SESSION['id'] = $user['id'];
+            header("location:connexionAdmin.php"); // Redirection après une inscription réussie
+            exit;
         }
-        echo $_SESSION['id'];
     } else {
-        echo 'veuillez remplir tous les champs...';
+        echo 'Veuillez remplir tous les champs...';
     }
 }
+
 require "../views/footer.html";
