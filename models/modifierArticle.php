@@ -1,7 +1,8 @@
 <?php
+
 require '../models/PDO.php';
-include '../views/headerUser.html';
+include '../views/header.html';
 require '../models/fonctions.php';
-displaySample();
-include '../views/sample.html';
+updatePost();
+include '../views/modifierArticle.html';
 include '../views/footer.html';
