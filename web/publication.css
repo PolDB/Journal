@@ -1,0 +1,52 @@
+.commentaire {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto; /* Centre le bloc sur la page */
+    box-sizing: border-box; /* Pour inclure le padding dans la largeur */
+}
+
+.commentaire form label,
+.commentaire form input[type="text"],
+.commentaire form textarea,
+.commentaire form input[type="submit"] {
+    width: 100%;
+    margin-bottom: 15px;
+    box-sizing: border-box; /* Inclure le padding dans la largeur */
+}
+
+.commentaire form input[type="submit"] {
+    cursor: pointer;
+}
+
+.back-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.back-button a button {
+    cursor: pointer;
+}
+
+@media only screen and (min-width: 601px) {
+    .back-button {
+        justify-content: center; /* Centrer le contenu */
+    }
+}
+
+/* Media queries pour rendre la page responsive */
+@media only screen and (max-width: 600px) {
+    .commentaire {
+        padding: 15px;
+    }
+
+    .commentaire form input[type="submit"] {
+        width: auto; /* Taille automatique pour le bouton submit */
+    }
+}

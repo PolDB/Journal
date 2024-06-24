@@ -181,7 +181,7 @@ function updatePost()
 
                 header('Location:../models/articles.php');
             } else {
-                echo "Modifier votre article ci-desous !!";
+                echo "";
             }
         } else {
             echo "aucun identifiant trouvé";
