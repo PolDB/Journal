@@ -253,7 +253,7 @@ function postAdmin()
 {
     global $bdd;
     if (!$_SESSION['id']) {
-        header('location:../controller/connexionAdmin.php');
+        header('location:../models/connexionAdmin.php');
     }
     include '../views/articles.html';
     $recupArticles = $bdd->query('SELECT * FROM articles');
@@ -263,9 +263,9 @@ function postAdmin()
             echo '<div class="article" style="border: 1px solid black;">';
             echo '<h1>' . htmlspecialchars($article['Titre']) . '</h1>';
             echo '<p>' . htmlspecialchars($article['Contenu']) . '</p>';
-            echo '<a href="../controller/supprimerArticle.php?id=' . $article['Id'] . '">';
+            echo '<a href="../models/supprimerArticle.php?id=' . $article['Id'] . '">';
             echo '<button>Supprimer l\'article</button></a>';
-            echo '<a href="../controller/modifierArticle.php?id=' . $article['Id'] . '">';
+            echo '<a href="../models/modifierArticle.php?id=' . $article['Id'] . '">';
             echo '<button>Modifier l\'article</button></a>';
             echo '</div>';
         }
