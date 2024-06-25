@@ -1,7 +1,7 @@
 <?php
 require '../models/PDO.php';
-include '../views/headerUser.html';
 require '../models/fonctions.php';
+afficherBoutons();
 displaySample();
 include '../views/sample.html';
 include '../views/footer.html';
