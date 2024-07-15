@@ -283,7 +283,7 @@ function displayUsers()
 {
     global $bdd;
     if (!isset($_SESSION['id'])) {
-        header('Location: ../controller/connexionAdmin.php');
+        header('Location: ../models/connexionAdmin.php');
         exit();
     }
 
@@ -292,7 +292,7 @@ function displayUsers()
 
     $recupUsers = $bdd->query('SELECT * FROM membres');
     while ($user = $recupUsers->fetch()) {
-        echo '<p>' . htmlspecialchars($user['pseudo']) . ' <a href="../controller/ban.php?id=' . $user['id'] . '">Bannir le membre</a></p>';
+        echo '<p>' . htmlspecialchars($user['pseudo']) . ' <a href="../models/ban.php?id=' . $user['id'] . '">Bannir le membre</a></p>';
     }
 }
 
