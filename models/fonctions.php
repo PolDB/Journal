@@ -4,7 +4,7 @@
 //fichier php regroupant les actions de mon site sous formes de fonctions//
 session_start();
 require '../models/PDO.php';
-function afficherBoutons()
+function afficherBoutons() // fonction qui affiche les boutons de connexion membre et inscription si l'utilisateur n'est pas connu, et les retirent lorsque l'on se situe sur une page ou l'id  utilisateur est connu
 {
     // Vérifier si l'utilisateur est connecté en vérifiant la présence d'une variable de session par exemple
     if (isset($_SESSION['id'])) {
@@ -16,7 +16,7 @@ function afficherBoutons()
     }
 }
 
-function banUser()
+function banUser() //fonctions qui ban les users 
 {
     global $bdd;
     if (isset($_GET['id']) and !empty($_GET['id'])) {
@@ -36,7 +36,7 @@ function banUser()
     }
 }
 
-function loginAdmin()
+function loginAdmin() //connexion de l'admin
 {
     global $bdd;
     if (isset($_POST['valider'])) {
@@ -69,7 +69,7 @@ function loginAdmin()
     }
 }
 
-function loginUser()
+function loginUser() //connexion de l'utilisateur
 {
     global $bdd;
     if (isset($_POST['valider'])) {
@@ -102,7 +102,7 @@ function loginUser()
     }
 }
 
-function signUpAdmin()
+function signUpAdmin() //inss ription de l'admin
 {
     global $bdd;
 
@@ -131,7 +131,7 @@ function signUpAdmin()
     }
 }
 
-function signUpUsers()
+function signUpUsers() //inscription de l'utilisateur
 {
     global $bdd;
     if (isset($_POST['envoi'])) {
@@ -162,7 +162,7 @@ function signUpUsers()
     }
 }
 
-function updatePost()
+function updatePost() //mise à jour de la donnée
 {
     global $bdd;
     if (isset($_GET['id']) and !empty($_GET['id'])) {
@@ -192,7 +192,7 @@ function updatePost()
     }
 }
 
-function post()
+function post() //post d'une nouvelle donnée
 {
     global $bdd;
     if (!$_SESSION['id']) {
@@ -215,7 +215,7 @@ function post()
     }
 }
 
-function deletePost()
+function deletePost() //supression de la donnée
 {
     global $bdd;
     if (isset($_GET['id']) and !empty($_GET['id'])) {
@@ -234,7 +234,7 @@ function deletePost()
     }
 }
 
-function postUsers()
+function postUsers() // affichage des post si on on est membre
 {
     global $bdd;
     // Inclusion du fichier articlesMembres.html
@@ -252,7 +252,7 @@ function postUsers()
     }
 }
 
-function postAdmin()
+function postAdmin() //affichage des post sii on est admin, avec les opitons de crud de modification et de supression
 {
     global $bdd;
     if (!$_SESSION['id']) {
@@ -275,14 +275,14 @@ function postAdmin()
     }
 }
 
-function logout()
+function logout() //déconnexion 
 {
     $_SESSION = array();
     session_destroy();
     header('location:../models/sample.php');
 }
 
-function displayUsers()
+function displayUsers() //affichage des utilisateurs que l'on peut supprimer si l'on est admin
 {
     global $bdd;
     if (!isset($_SESSION['id'])) {
@@ -299,7 +299,7 @@ function displayUsers()
     }
 }
 
-function displaySample()
+function displaySample() //affichgae de la page d'acceuil lorsque l'on est pas pas connecté
 {
     global $bdd;
     $recupArticles = $bdd->query('SELECT * FROM articles');
