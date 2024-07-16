@@ -1,6 +1,6 @@
 <?php
 require '../models/PDO.php';
-include '../views/header.html';
 require '../models/fonctions.php';
+afficherBoutons();
 postAdmin();
 include '../views/footer.html';

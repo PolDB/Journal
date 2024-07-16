@@ -1,4 +1,7 @@
+
+
 <?php
+//fichier php regroupant les actions de mon site sous formes de fonctions//
 session_start();
 require '../models/PDO.php';
 function afficherBoutons()
