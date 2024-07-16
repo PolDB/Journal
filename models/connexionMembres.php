@@ -1,5 +1,5 @@
 <?php
-include '../models/fonctions.php'; // Correction du point-virgule manquant
+include '../models/fonctions.php';
 require '../models/PDO.php';
 afficherBoutons();
 loginUser();
